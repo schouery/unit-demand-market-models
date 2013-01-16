@@ -6,9 +6,9 @@ We have three models for generating instances for Unit-Demand markets (also know
 The code is written in C++ and we belive that can be compiled in almost any system. 
 
 File Format
-===========
+-----------
 
-<BIDDERS GROUPS> <ITEMS> <VALUATIONS>
+`<BIDDERS GROUPS> <ITEMS> <VALUATIONS>
 <SIZE OF BIDDER GROUP 0>
 <SIZE OF BIDDER GROUP 1>
 ...
@@ -16,15 +16,15 @@ File Format
 <content of valuation 0>
 <content of valuation 1>
 ...	
-<content of valuation VALUATIONS - 1>
+<content of valuation VALUATIONS - 1>`
 
 where <content of valuation k> (k between 1 and VALUATIONS - 1) represents:
 <BIDDER GROUP> <ITEM> <VALUE>
 
 EXAMPLE
-=======
+-------
 
-5 3 8
+`5 3 8
 2
 2
 1
@@ -37,7 +37,7 @@ EXAMPLE
 3 0 165.016
 3 1 225.806
 4 0 12.89
-4 2 13.6852
+4 2 13.6852`
 
 In this instance, we have 5 bidders, 3 items and 8 positive valuations. Bidders groups 1, 2 and 4 have size 2 and bidders groups 3 and 5 have size 1.
 
