@@ -8,38 +8,38 @@ The code is written in C++ and we belive that can be compiled in almost any syst
 File Format
 -----------
 
-`<BIDDERS GROUPS> <ITEMS> <VALUATIONS>
+    <BIDDERS GROUPS> <ITEMS> <VALUATIONS>
 
-<SIZE OF BIDDER GROUP 0>
-	
-<SIZE OF BIDDER GROUP 1>
-...
-<SIZE OF BIDDER GROUP (BIDDERS GROUPS - 1)>	
-<content of valuation 0>
-<content of valuation 1>
-...	
-<content of valuation VALUATIONS - 1>`
+    <SIZE OF BIDDER GROUP 0>
 
-where <content of valuation k> (k between 1 and VALUATIONS - 1) represents:
-<BIDDER GROUP> <ITEM> <VALUE>
+    <SIZE OF BIDDER GROUP 1>
+    ...
+    <SIZE OF BIDDER GROUP (BIDDERS GROUPS - 1)>	
+    <content of valuation 0>
+    <content of valuation 1>
+    ...	
+    <content of valuation VALUATIONS - 1>
+
+    where <content of valuation k> (k between 1 and VALUATIONS - 1) represents:
+    <BIDDER GROUP> <ITEM> <VALUE>
 
 EXAMPLE
 -------
 
-`5 3 8
-2
-2
-1
-2
-1
-0 0 121.848
-0 1 163.992
-1 0 1244.48
-1 2 195.299
-3 0 165.016
-3 1 225.806
-4 0 12.89
-4 2 13.6852`
+    5 3 8
+    2
+    2
+    1
+    2
+    1
+    0 0 121.848
+    0 1 163.992
+    1 0 1244.48
+    1 2 195.299
+    3 0 165.016
+    3 1 225.806
+    4 0 12.89
+    4 2 13.6852
 
 In this instance, we have 5 bidders, 3 items and 8 positive valuations. Bidders groups 1, 2 and 4 have size 2 and bidders groups 3 and 5 have size 1.
 
