@@ -8,7 +8,7 @@
 #include "random.h"
 using namespace std;
 
-int bidders = -1, items = -1, vmin = -1, vmax = -1, degree = -1, mult = 10, min_group_size = 1, max_group_size = 1;
+int bidders = -1, items = -1, vmin = -1, vmax = -1, degree = -1, mult = 10;
 double radius;
 char *filename;
 
@@ -18,7 +18,7 @@ double dist(double x1, double y1, double x2, double y2) {
 
 void usage(char *argv){
   cout << argv << " [-n bidders_and_items | -b bidders -i items] " <<
-                  "-h max_value [-r radius | -d degree] -m multiplier [-g min_group_size -G max_group_size] filename" << endl;
+                  "-h max_value [-r radius | -d degree] -m multiplier filename" << endl;
   cout << "-n bidders_and_items: The number of bidders and the number of items are both equal to bidders_and_items." << endl;
   cout << "-b bidders: Sets the number of bidders." << endl;
   cout << "-i items: Sets the number of items." << endl;
@@ -27,17 +27,13 @@ void usage(char *argv){
   cout << "-d degree: Expected degree" << endl;
   cout << "-m multiplier: Multlipies the value by multipler before rounding to integer. Used so the value are sufficiently diferent." << endl;
   cout << "\t Default: 10" << endl;
-  cout << "-g min_group_size: The minimum size of bidders group." << endl;
-  cout << "\t Default: 1." << endl;
-  cout << "-G max_group_size: The maximum size of bidders group." << endl;
-  cout << "\t Default: 1." << endl;
   cout << "filename: The filename for the file to be saved." << endl;
 }
 
 int setup(int argc, char **argv) {
   int c; 
   opterr = 0; 
-  while ((c = getopt (argc, argv, "n:b:i:l:h:r:d:m:g:G:")) != -1) {
+  while ((c = getopt (argc, argv, "n:b:i:l:h:r:d:m:")) != -1) {
     switch (c) {
       case 'n':
         bidders = atoi(optarg);
@@ -59,12 +55,6 @@ int setup(int argc, char **argv) {
         break;
       case 'm':
         mult = atoi(optarg);
-        break;
-      case 'g':
-        min_group_size = atoi(optarg);
-        break;
-      case 'G':
-        max_group_size = atoi(optarg);
         break;
       case '?':
         if (optopt == 'b' || optopt == 'i' || optopt == 'h' || optopt == 'n' || optopt == 'm')
@@ -100,7 +90,6 @@ int main(int argc, char **argv) {
     radius = sqrt(degree / (items * pi));
   }
   graph g = graph_new(bidders, items);
-  randNb(g, min_group_size, max_group_size + 1); 
   bidderx = (double *)malloc(bidders * sizeof(double));
   biddery = (double *)malloc(bidders * sizeof(double));
 	itemx = (double *)malloc(items * sizeof(double));

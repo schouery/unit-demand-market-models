@@ -8,8 +8,6 @@ using namespace std;
 
 graph graph_new(int bidders, int items) {
   graph g = (graph)malloc(sizeof(Graph));
-  g->Nb = (int *)calloc(bidders, sizeof(int));
-  g->bweight = (int *)malloc(bidders*sizeof(int));
   g->dbidder = (int *)calloc(bidders,sizeof(int));
   g->ditem = (int *)calloc(items,sizeof(int));
   g->bidders = bidders;
@@ -54,19 +52,10 @@ void graph_save(graph g, char *filename) {
   file.open(filename);
   file << g->bidders << " " << g->items << " " << g->edges << endl;
   for(int i = 0; i < g->bidders; i++) {
-    file << g->Nb[i] << endl;
-  }
-  for(int i = 0; i < g->bidders; i++) {
     for(int j = 0; j < g->items; j++) {
       if(g->adj[i][j])
         file << i << " " << j << " " << g->adj[i][j] << endl;
     }
   }
   file.close();
-}
-
-void randNb(graph g, int min, int max) {
-  for(int i = 0; i < g->bidders; i++) {
-    g->Nb[i] = randInt(max - min) + min;
-  }
 }

@@ -8,13 +8,13 @@
 #include "random.h"
 using namespace std;
 
-int bidders = -1, items = -1, qmax = -1, max_edges = -1, min_group_size = 1, max_group_size = 1; 
+int bidders = -1, items = -1, qmax = -1, max_edges = -1; 
 double percentage = 0.1;
 char *filename;
 
 void usage(char *argv){
   cout << "usage: " << argv << " [-n bidders_and_items | -b bidders -i items] -e edges " <<
-                  "-q max_quality [-d percentage_of_deviation] [-g min_group_size -G max_group_size] filename" << endl;
+                  "-q max_quality [-d percentage_of_deviation] filename" << endl;
   cout << "-n bidders_and_items: The number of bidders and the number of items are both equal to bidders_and_items." << endl;
   cout << "-b bidders: Sets the number of bidders." << endl;
   cout << "-i items: Sets the number of items." << endl;
@@ -22,17 +22,13 @@ void usage(char *argv){
   cout << "-q max_quality: Defines the maximum quality of an item." << endl;
   cout << "-d percentage_of_deviation: The percentage of deviation. For exemple, if the mean price is (randomly) chosen as 10 and deviation is 0.2, then the standard deviation used is 2." << endl;
   cout << "\t Default: 0.1." << endl;
-  cout << "-g min_group_size: The minimum size of bidders group." << endl;
-  cout << "\t Default: 1." << endl;
-  cout << "-G max_group_size: The maximum size of bidders group." << endl;
-  cout << "\t Default: 1." << endl;
   cout << "filename: The filename for the file to be saved." << endl;
 }
 
 int setup(int argc, char **argv) {
   int c; 
   opterr = 0; 
-  while ((c = getopt (argc, argv, "n:b:i:e:q:d:g:G:")) != -1) {
+  while ((c = getopt (argc, argv, "n:b:i:e:q:d:")) != -1) {
     switch (c) {
       case 'n':
         bidders = atoi(optarg);
@@ -51,12 +47,6 @@ int setup(int argc, char **argv) {
         break;
       case 'd':
         percentage = atof(optarg);
-        break;
-      case 'g':
-        min_group_size = atoi(optarg);
-        break;
-      case 'G':
-        max_group_size = atoi(optarg);
         break;
       case '?':
         if (optopt == 'b' || optopt == 'i' || optopt == 'e' || optopt == 'q' || optopt == 'd')
@@ -86,7 +76,6 @@ int main(int argc, char *argv[]) {
     exit(0);
   }
   graph g = graph_new(bidders, items);
-  randNb(g, min_group_size, max_group_size + 1); 
   for(int edges = 0; edges < max_edges; edges++)
   {
     bool found = false;
