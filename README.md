@@ -44,3 +44,9 @@ EXAMPLE
 In this instance, we have 5 bidders, 3 items and 8 positive valuations. Bidders groups 1, 2 and 4 have size 2 and bidders groups 3 and 5 have size 1.
 
 Item 0 has value 121.848 for bidder group 0 and value 1244.48 for bidder group 1. Item 1 has value 163.992 for bidder group 0 and value 0 for bidder group 1.
+
+
+INSTANCES
+---------
+
+Folder FFFS-instances contains the instances generated for our work.
