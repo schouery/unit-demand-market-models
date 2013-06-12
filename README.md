@@ -50,3 +50,4 @@ For example, instance p-n=150-e=1200-q=200-d=0.25.15 was generated using the pop
 
 and it was the 15th instance generated according to this parameters. 
 
+Also, inside the subfolders small and large, one can find the results for our empirical tests in tex and pdf formats.
