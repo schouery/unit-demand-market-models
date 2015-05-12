@@ -1,7 +1,7 @@
 CCC = g++
 CCFLAGS = -O3 -ansi -Wall -pedantic
 
-all: characteristics neighborhood popularity
+all: characteristics neighborhood popularity stm_generator
 
 characteristics: characteristics.o graph.o random.o
 	$(CCC) $(CCFLAGS) -lm characteristics.o graph.o random.o -lm -o characteristics
@@ -26,6 +26,12 @@ random.o: random.cpp random.h
 
 graph.o: graph.cpp graph.h
 	$(CCC) -c $(CCFLAGS) graph.cpp -o graph.o
+
+stm_generator: stm_generator.o random.o
+	$(CCC) $(CCFLAGS) -lm stm_generator.o random.o -lm -o stm_generator
+
+stm_generator.o: stm_generator.cpp
+	$(CCC) -c $(CCFLAGS) stm_generator.cpp -o stm_generator.o	
 
 clean:
 	/bin/rm -rf *.o *~ characteristics neighborhood popularity
