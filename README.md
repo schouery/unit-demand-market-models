@@ -8,14 +8,14 @@ The code is written in C++ and we believe that can be compiled in almost any sys
 File Format
 -----------
 
-    <BIDDERS> <ITEMS> <VALUATIONS>
+    <CONSUMERS> <ITEMS> <VALUATIONS>
     <content of valuation 0>
     <content of valuation 1>
     ...	
     <content of valuation VALUATIONS - 1>
 
     where <content of valuation k> (k between 1 and VALUATIONS - 1) represents:
-    <BIDDER> <ITEM> <VALUE>
+    <CONSUMER> <ITEM> <VALUE>
 
 EXAMPLE
 -------
@@ -30,15 +30,15 @@ EXAMPLE
     4 0 12.89
     4 2 13.6852
 
-In this instance, we have 5 bidders, 3 items and 8 positive valuations.
+In this instance, we have 5 consumers, 3 items and 8 positive valuations.
 
-Item 0 has value 121.848 for bidder 0 and value 1244.48 for bidder 1. Item 1 has value 163.992 for bidder 0 and value 0 for bidder 1. And so forth.
+Item 0 has value 121.848 for consumer 0 and value 1244.48 for consumer 1. Item 1 has value 163.992 for consumer 0 and value 0 for consumer 1. And so forth.
 
 
 INSTANCES
 ---------
 
-Inside the folder **instances** we have two subfolder, one called **small** and other called **large**. The folder called small contains instances with 50, 100, ..., 300 items (and the same size of bidders) and the folder called large contains instances with 1000, 1500, ..., 3000 items (and the same size of bidders).
+Inside the folder **instances** we have two subfolder, one called **small** and other called **large**. The folder called small contains instances with 50, 100, ..., 300 items (and the same size of consumers) and the folder called large contains instances with 1000, 1500, ..., 3000 items (and the same size of consumers).
 
 Inside this subfolder we have three folders, one for each model. And inside each model folder we have the instances in the file format described before. 
 
@@ -51,3 +51,10 @@ For example, instance p-n=150-e=1200-q=200-d=0.25.15 was generated using the pop
 and it was the 15th instance generated according to this parameters. 
 
 Also, inside the subfolders small and large, one can find the results for our empirical tests in tex and pdf formats.
+
+HEURISTICS
+_________
+
+For most of the instances, we computed a solution using a heuristic. The heuristic is presented in a separated file, with the suffix -heuristic. Also, we present, we present in every folder (except for large isntances), a file called known_optimal_solutions.txt that states for which instances we now that the corresponding heuristic is, in fact, an optimal solution.
+
+An heuristic is represented by a list of triplets, where the first value is the index of the consumer, the second value is the item allocated to such consumer where -1 represents that no item is allocated to the consumer and the third value is the price paid.
